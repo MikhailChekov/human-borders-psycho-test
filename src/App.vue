@@ -6,6 +6,7 @@
                 v-if="isGoing" 
                 :questions="questions" 
                 @finish="finish" 
+                
             />
             <Result 
                 v-else 
@@ -28,7 +29,7 @@ export default {
             isGoing: true,
             questions: QUESTIONS,
             results: RESULTS,
-            points: null,
+            points: 41,
         };
     },
     methods: {

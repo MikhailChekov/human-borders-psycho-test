@@ -2,7 +2,7 @@ const QUESTIONS = [
     {
         question: 'Test question 1',
         answers: [
-            { ansv: 'Yes, i like it', points: 3, isChoised: false},
+            { ansv: 'Yes, i like it (3 points)', points: 3, isChoised: false},
             { ansv: 'No, i dissaper', points: 1, isChoised: false },
             { ansv: 'Yes, i don\'t know what type)', points: 2, isChoised: false },
             { ansv: 'I dont know who it was!', points: 0, isChoised: false }
@@ -13,7 +13,7 @@ const QUESTIONS = [
         answers: [
             { ansv: 'Yes', points: 3, isChoised: false },
             { ansv: 'No, i do not sure', points: 1, isChoised: false },
-            { ansv: 'Yes, i do not sure', points: 2, isChoised: false },
+            { ansv: 'Yes, i do not sure (2 points)', points: 2, isChoised: false },
             { ansv: 'I dont know', points: 0, isChoised: false }
         ]
     }

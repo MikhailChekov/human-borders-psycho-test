@@ -37,6 +37,7 @@ import Back from '@/assets/img/arrow_left.svg';
 export default {
     data() {
         return {
+            points: 0,
             questionIndex: 0,
             Close,
             Back
@@ -47,7 +48,9 @@ export default {
         answerHandler(i) {
             //make answer choised
             this.currentQuestion.answers[i].isChoised = true;
-
+            // increase points, take from answer
+            this.points += this.currentQuestion.answers[i].points;
+            
             //Check for last question
             if (this.questionIndex < this.questions.length - 1) {
                 //Go to next question
@@ -55,33 +58,22 @@ export default {
                     this.questionIndex++;
                 }, 500);
             } else {
-                //TODO: change logic => Save results every question; Decrease points when back
-                let result = 0;
-                //Get arrays of answers and sum points to result
-                let questions = this.questions.map(e => e.answers);
-                questions.forEach(e => {
-                    console.log(e);
-                    // if(e.isChoised){
-                    //     console.log(e.isChoised);
-                    //     result += e.points;
-                    // }
-                });
-                console.log(result);
-
                 //Finish test
                 setTimeout(() => {
-                    
-
-                    // this.$emit('finish', result);
+                    this.$emit('finish', this.points);
                 }, 500);
             }
         },
         //return back to previous question
         backHandler() {
+            // get previous question
             this.questionIndex--;
-            //unchoised the answer :)
+            // decrease points
+            this.points -= this.currentQuestion.answers.filter(e => e.isChoised)[0].points;
+            // unchoising answer to delete class :)
             this.currentQuestion.answers = 
                 this.currentQuestion.answers.map(e => ({...e, isChoised: false}));
+
         }
 
     },
