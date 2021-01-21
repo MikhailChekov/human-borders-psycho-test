@@ -2,8 +2,16 @@
     <div class="wrapper">
         <div class="container">
             <div class="main-title">Тест на психологические границы</div>
-            <Question v-if="isGoing" :questions="questions" @finish="isGoing = !isGoing" />
-            <Result v-else :results="results" />
+            <Question 
+                v-if="isGoing" 
+                :questions="questions" 
+                @finish="finish" 
+            />
+            <Result 
+                v-else 
+                :points="points"
+                :results="results" 
+            />
         </div>
     </div>
 </template>
@@ -20,7 +28,14 @@ export default {
             isGoing: true,
             questions: QUESTIONS,
             results: RESULTS,
+            points: null,
         };
+    },
+    methods: {
+        finish(points){
+            this.isGoing = !this.isGoing;
+            this.points = points;
+        }
     },
     components: {
         Question,
@@ -30,12 +45,16 @@ export default {
 </script>
 
 <style lang="scss">
+
+
 $mw: 970px;
+
+*{ box-sizing: border-box; }
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #0067B6;
-    color: #fff;
+    background-color: #fff;
+    color: #111;
 }
 
 li{
